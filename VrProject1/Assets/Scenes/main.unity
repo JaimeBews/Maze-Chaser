@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -340,6 +340,10 @@ Prefab:
       propertyPath: m_UseHeadBob
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_Radius
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
@@ -375,6 +379,9 @@ MonoBehaviour:
   - {fileID: 4326070749071828, guid: e2f9f7861667f1444bfd9c80724c2df0, type: 2}
   - {fileID: 4512006433472436, guid: be48a2f5b7985b340be40d102969964b, type: 2}
   - {fileID: 4169661253099368, guid: ca2bd4018c9909d40b2175bf52e0a99d, type: 2}
+  - {fileID: 4430065325019262, guid: e7ae9a7834cce3742815cf9b5189de83, type: 2}
+  - {fileID: 4645847508196318, guid: 94d13363050f562468404ab9e38478f0, type: 2}
+  - {fileID: 4632748602358344, guid: 62a48d96e5d51264db20f12a310c3458, type: 2}
   startTile: {fileID: 4505795578491756, guid: ede274795ce49e9458c9175f99d0e09b, type: 2}
   endTile: {fileID: 4649523096627862, guid: c75cb7a60a99bd04fbe7a7a8946212c1, type: 2}
   player: {fileID: 1456158375}
@@ -636,7 +643,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4326070749071828, guid: e2f9f7861667f1444bfd9c80724c2df0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4326070749071828, guid: e2f9f7861667f1444bfd9c80724c2df0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -644,7 +651,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4326070749071828, guid: e2f9f7861667f1444bfd9c80724c2df0, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -80.5
       objectReference: {fileID: 0}
     - target: {fileID: 4326070749071828, guid: e2f9f7861667f1444bfd9c80724c2df0, type: 2}
       propertyPath: m_LocalRotation.x
