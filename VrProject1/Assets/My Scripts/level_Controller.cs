@@ -8,39 +8,43 @@ public class level_Controller : MonoBehaviour
     public Transform startTile;
     public Transform endTile;
     public Transform player;
+	public Transform slimeEnemy;
+	public Transform zombieEnemy;
+	public Transform skeleteonEnemy;
     // Use this for initialization
     void Start()
     {
         spawnGrid();
         chooseStart();
+		spawnEnemy();
     }
 
     private void chooseStart()
     {
         int index = Random.Range(0, 3);
-        int randomChoice = (Random.Range(0, 9) * 16);
+        int randomChoice = (Random.Range(0, 9) * 32);
 
         switch (index)
         {
             case 0:
-                Instantiate(startTile, new Vector3(-16, 0, randomChoice), Quaternion.identity);
-                player.position = new Vector3(-16, 1, randomChoice);
-                Instantiate(endTile, new Vector3(160, 0, Random.Range(0, 9) * 16), Quaternion.identity);
+                Instantiate(startTile, new Vector3(-32, 0, randomChoice), Quaternion.identity);
+                player.position = new Vector3(-32, 1, randomChoice);
+                Instantiate(endTile, new Vector3(320, 0, Random.Range(0, 9) * 32), Quaternion.identity);
                 break;
             case 1:
-                Instantiate(startTile, new Vector3(160, 0, randomChoice), Quaternion.identity);
-                player.position = new Vector3(160, 1, randomChoice);
-                Instantiate(endTile, new Vector3(-16, 0, Random.Range(0, 9) * 16), Quaternion.identity);
+                Instantiate(startTile, new Vector3(320, 0, randomChoice), Quaternion.identity);
+                player.position = new Vector3(320, 1, randomChoice);
+                Instantiate(endTile, new Vector3(-32, 0, Random.Range(0, 9) * 32), Quaternion.identity);
                 break;
             case 2:
-                Instantiate(startTile, new Vector3(randomChoice, 0, -16), Quaternion.identity);
-                player.position = new Vector3(randomChoice, 1, -16);
-                Instantiate(endTile, new Vector3((Random.Range(0, 9) * 16), 0, 160), Quaternion.identity);
+                Instantiate(startTile, new Vector3(randomChoice, 0, -32), Quaternion.identity);
+                player.position = new Vector3(randomChoice, 1, -32);
+                Instantiate(endTile, new Vector3((Random.Range(0, 9) * 32), 0, 320), Quaternion.identity);
                 break;
             case 3:
-                Instantiate(startTile, new Vector3(randomChoice, 0, 160), Quaternion.identity);
-                player.position = new Vector3(randomChoice, 1, 160);
-                Instantiate(endTile, new Vector3((Random.Range(0, 9) * 16), 0, -16), Quaternion.identity);
+                Instantiate(startTile, new Vector3(randomChoice, 0, 320), Quaternion.identity);
+                player.position = new Vector3(randomChoice, 1, 320);
+                Instantiate(endTile, new Vector3((Random.Range(0, 9) * 32), 0, -32), Quaternion.identity);
 
                 break;
         }
@@ -53,12 +57,16 @@ public class level_Controller : MonoBehaviour
         {
             for (int j = 0; j < 10; j++)
             {
-                Instantiate(getRandomTile(), new Vector3(i * 16, 0, j * 16), Quaternion.identity);
+                Instantiate(getRandomTile(), new Vector3(i * 32, 0, j * 32), Quaternion.identity);
             }
         }
         navscript.buildNavMesh();
     }
-
+	void spawnEnemy(){
+		Instantiate(slimeEnemy, new Vector3(0, 0, 0), Quaternion.identity);
+		Instantiate(zombieEnemy, new Vector3(0, 0, 0), Quaternion.identity);
+		Instantiate(skeleteonEnemy, new Vector3(0, 0, 0), Quaternion.identity);
+	}
     public Transform getRandomTile()
     {
         int index = Random.Range(0, tiles.Length);
