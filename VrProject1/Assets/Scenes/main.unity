@@ -192,6 +192,10 @@ Prefab:
       propertyPath: m_Name
       value: TEMPPLEASEREMOVE
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f3e48697e8c7f8446a3d28d13ad46687, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: f3e48697e8c7f8446a3d28d13ad46687, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: f3e48697e8c7f8446a3d28d13ad46687, type: 3}
@@ -292,6 +296,13 @@ MonoBehaviour:
   - {fileID: 4430065325019262, guid: e7ae9a7834cce3742815cf9b5189de83, type: 2}
   - {fileID: 4645847508196318, guid: 94d13363050f562468404ab9e38478f0, type: 2}
   - {fileID: 4632748602358344, guid: 62a48d96e5d51264db20f12a310c3458, type: 2}
+  - {fileID: 4977312858308204, guid: f146c0007643cee4aa0f7aa3068225bb, type: 2}
+  - {fileID: 4725196645885718, guid: 3a70a3003e8c082449cda70f2ff58bde, type: 2}
+  - {fileID: 4642122065877460, guid: 1e108ca492949af4c8d93b399a1a721b, type: 2}
+  - {fileID: 4301081340849796, guid: 4e1b7fa627db27d40a6b5081d35bf4bb, type: 2}
+  - {fileID: 4746495035218928, guid: f09fb770be269b145b1f08d77b763fe8, type: 2}
+  - {fileID: 4131270703764144, guid: 0f0b3c8b14eac824fbebeea2f431ed74, type: 2}
+  tilesGO: []
   startTile: {fileID: 4505795578491756, guid: ede274795ce49e9458c9175f99d0e09b, type: 2}
   endTile: {fileID: 4649523096627862, guid: c75cb7a60a99bd04fbe7a7a8946212c1, type: 2}
   player: {fileID: 1456158375}
@@ -301,6 +312,9 @@ MonoBehaviour:
   skeleteonEnemy: {fileID: 4670564501312542, guid: d78ca24e5a4dc3e42930e4dc6da5baad,
     type: 2}
   navscript: {fileID: 892045251}
+  numSlimeToSpawn: 1
+  numSkeletonToSpawn: 1
+  numZombieToSpawn: 1
 --- !u!4 &892045250
 Transform:
   m_ObjectHideFlags: 0
@@ -457,7 +471,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e085e9c8b33b354698e40a1c967e908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  iframes: 2
+  POGO: {fileID: 892045248}
+  Lives: 3
+  health: 5
+  maxHealth: 5
 --- !u!1 &1617913030 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: f3e48697e8c7f8446a3d28d13ad46687, type: 3}

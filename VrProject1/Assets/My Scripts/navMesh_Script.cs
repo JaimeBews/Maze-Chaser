@@ -12,7 +12,7 @@ public class navMesh_Script : MonoBehaviour
     {
         for (int i = 0; i < surfaces.Length; i++)
         {
-            surfaces[i].BuildNavMesh();
+            //  surfaces[i].BuildNavMesh();
         }
     }
 
@@ -20,7 +20,18 @@ public class navMesh_Script : MonoBehaviour
     {
         for (int i = 0; i < surfaces.Length; i++)
         {
+            surfaces[0] = GameObject.FindGameObjectWithTag("Respawn").GetComponent<NavMeshSurface>();
             surfaces[i].BuildNavMesh();
+        }
+    }
+
+    public void UpdateMesh()
+    {
+        for (int i = 0; i < surfaces.Length; i++)
+        {
+            //  if (i != 0)
+            surfaces[i] = null;
+            //   surfaces[i].UpdateNavMesh();
         }
     }
 }

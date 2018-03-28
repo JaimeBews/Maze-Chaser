@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - endTile
+  - Tile
+  - Slime
+  - Zombie
+  - Skeleton
+  - startTile
   layers:
   - Default
   - TransparentFX

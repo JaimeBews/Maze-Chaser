@@ -9,7 +9,7 @@ public class skeleton_Script : MonoBehaviour
     public int damage;
     UnityEngine.AI.NavMeshAgent agent;
 
-    void Awake()
+    void Start()
     {
         dest = GameObject.FindWithTag("Player").transform;
 
@@ -22,9 +22,10 @@ public class skeleton_Script : MonoBehaviour
         {
             agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         }
-
+        if (!dest)
+            dest = GameObject.FindWithTag("Player").transform;
         agent.destination = dest.position;
-        animController.SetBool("isAttacking", Attack());
+        //  animController.SetBool("isAttacking", Attack());
     }
 
     private bool Attack()

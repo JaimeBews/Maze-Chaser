@@ -5,18 +5,35 @@ using UnityEngine;
 public class level_Controller : MonoBehaviour
 {
     public Transform[] tiles;
+    public GameObject[] tilesGO = null;
     public Transform startTile;
     public Transform endTile;
     public Transform player;
-	public Transform slimeEnemy;
-	public Transform zombieEnemy;
-	public Transform skeleteonEnemy;
+    public Transform slimeEnemy;
+    public Transform zombieEnemy;
+    public Transform skeleteonEnemy;
     // Use this for initialization
     void Start()
     {
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        deSpawnGrid();
         spawnGrid();
         chooseStart();
-		spawnEnemy();
+        spawnEnemy();
+    }
+
+    private void deSpawnGrid()
+    {
+        // if (tilesGO == null)
+        tilesGO = GameObject.FindGameObjectsWithTag("Tile");
+        foreach (GameObject tile in tilesGO)
+        {
+            Destroy(tile);
+        }
     }
 
     private void chooseStart()
@@ -53,6 +70,7 @@ public class level_Controller : MonoBehaviour
 
     void spawnGrid()
     {
+        //  navscript.UpdateMesh();
         for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < 10; j++)
@@ -62,11 +80,26 @@ public class level_Controller : MonoBehaviour
         }
         navscript.buildNavMesh();
     }
-	void spawnEnemy(){
-		Instantiate(slimeEnemy, new Vector3(0, 0, 0), Quaternion.identity);
-		Instantiate(zombieEnemy, new Vector3(0, 0, 0), Quaternion.identity);
-		Instantiate(skeleteonEnemy, new Vector3(0, 0, 0), Quaternion.identity);
-	}
+    public int numSlimeToSpawn = 1;
+    public int numSkeletonToSpawn = 1;
+    public int numZombieToSpawn = 1;
+
+    void spawnEnemy()
+    {
+        for (int i = 0; i < numSlimeToSpawn; i++)
+        {
+            Instantiate(slimeEnemy, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+        for (int i = 0; i < numZombieToSpawn; i++)
+        {
+            Instantiate(zombieEnemy, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+        for (int i = 0; i < numSkeletonToSpawn; i++)
+        {
+            Instantiate(skeleteonEnemy, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+    }
+
     public Transform getRandomTile()
     {
         int index = Random.Range(0, tiles.Length);

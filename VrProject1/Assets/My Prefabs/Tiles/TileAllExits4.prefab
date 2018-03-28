@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4645847508196318}
   m_Layer: 0
   m_Name: TileAllExits4
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1239281061694906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 66.15293, y: 156.29826, z: -63.853424}
   m_LocalScale: {x: 100, y: 76.16168, z: 100}
   m_Children:
   - {fileID: 4076956138826540}
@@ -87,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 892ed9f249e569a4384bbe4bd15df526, type: 3}
+  - {fileID: 2100000, guid: 8f6eb1fe10a217740a20c36e7a688996, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

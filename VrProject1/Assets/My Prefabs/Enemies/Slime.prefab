@@ -39,9 +39,11 @@ GameObject:
   - component: {fileID: 95543745439871622}
   - component: {fileID: 195976574337095772}
   - component: {fileID: 114250511719899744}
+  - component: {fileID: 54017864523645708}
+  - component: {fileID: 136874044612580932}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +261,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243281792134312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.95, y: 0, z: 0}
+  m_LocalPosition: {x: 150.45116, y: -2.7735841, z: 7.434515}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4284495589665370}
@@ -391,6 +393,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1629736178530382}
   m_Mesh: {fileID: 4300004, guid: dd1308e6965abf44789885ac76ec9d22, type: 3}
+--- !u!54 &54017864523645708
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1243281792134312}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95543745439871622
 Animator:
   serializedVersion: 3
@@ -419,6 +436,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86fa1cc62d3314f94ef4d97bf274f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
+  damage: 1
+--- !u!136 &136874044612580932
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1243281792134312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.577425
+  m_Height: 3.910328
+  m_Direction: 1
+  m_Center: {x: 0.016204834, y: 0.44309044, z: 0.7717724}
 --- !u!137 &137454022287449918
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
