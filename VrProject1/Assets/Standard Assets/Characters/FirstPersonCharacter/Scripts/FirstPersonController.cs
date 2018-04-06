@@ -27,7 +27,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
-
+        [SerializeField] private GameObject slowGlyph; 			  // the Blue slowing glyph
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -94,7 +94,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
-            Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
+            Vector3 desiredMove = m_Camera.transform.forward * m_Input.y + transform.right * m_Input.x;
 
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
@@ -124,7 +124,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 
             ProgressStepCycle(speed);
-            UpdateCameraPosition(speed);
+            //  UpdateCameraPosition(speed);
+
+            // this.Rotate((0, 1, 0), this.transform.m_Camera.gameObject.transform.rotation.y, Space.Self);
+            this.gameObject.transform.right = m_Camera.gameObject.transform.right;
 
             m_MouseLook.UpdateCursorLock();
         }
@@ -201,6 +204,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             bool waswalking = m_IsWalking;
 
+            if (Input.GetButton("Fire1"))
+            {
+                Instantiate(slowGlyph, this.transform.position, Quaternion.identity);
+            }
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running

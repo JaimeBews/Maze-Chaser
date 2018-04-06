@@ -8,6 +8,7 @@ public class skeleton_Script : MonoBehaviour
     public int health;
     public int damage;
     UnityEngine.AI.NavMeshAgent agent;
+    private float speed;
 
     void Start()
     {
@@ -21,19 +22,22 @@ public class skeleton_Script : MonoBehaviour
         if (!agent)
         {
             agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            speed = agent.speed;
         }
         if (!dest)
             dest = GameObject.FindWithTag("Player").transform;
         agent.destination = dest.position;
-        //  animController.SetBool("isAttacking", Attack());
+        animController.SetBool("isAttacking", Attack());
     }
 
     private bool Attack()
     {
-        if ((dest.position - this.gameObject.transform.position).magnitude < 1)
+        if ((dest.position - this.gameObject.transform.position).magnitude < 2.5f)
         {
+            agent.speed = 0;
             return true;
         }
+        agent.speed = speed;
         return false;
     }
 }

@@ -10,9 +10,12 @@ public class player_Script : MonoBehaviour
     [SerializeField] private int Lives = 3;
     public int health;
     [SerializeField] private int maxHealth = 5;
+    [SerializeField] private load_Level_Script LLS;
+    [SerializeField] private Animator dragon;
     // Use this for initialization
     void Start()
     {
+        dragon = GameObject.FindGameObjectWithTag("Dragon").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,6 +26,8 @@ public class player_Script : MonoBehaviour
             playerDied();
             health = maxHealth;
         }
+        if (this.gameObject.transform.position.y < -10)
+            playerDied();
     }
 
     void playerDied()
@@ -49,10 +54,18 @@ public class player_Script : MonoBehaviour
         invulnerable = false;
     }
 
+    bool Eating()
+    {
+        return true;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "endTile")
-            Destroy(other.gameObject);// what should happen when you win
+        {
+            dragon.SetBool("Eating", Eating());
+            LLS.LoadLevel("Main");
+        }
         if (other.tag == "Zombie" && !invulnerable)
         {
             health -= other.gameObject.GetComponent<zombie_Script>().damage;
