@@ -13,9 +13,26 @@ public class level_Controller : MonoBehaviour
     public Transform zombieEnemy;
     public Transform skeleteonEnemy;
     // Use this for initialization
+	 private static bool spawned = false;
+	void Awake(){
+		if(spawned == false){
+		   spawned = true;
+		   DontDestroyOnLoad(this);			   
+		}
+		else{
+			DestroyImmediate(this); 
+											
+		}
+	}
+	void OnLevelWasLoaded(){
+		player=GameObject.FindGameObjectWithTag("Player").transform;
+		StartGame();
+		
+	}
     void Start()
     {
         StartGame();
+		player=GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public void StartGame()
@@ -28,7 +45,8 @@ public class level_Controller : MonoBehaviour
 
     private void deSpawnGrid()
     {
-        // if (tilesGO == null)
+        // if (tilesGO != null)
+		//	 tilesGO=null;
         tilesGO = GameObject.FindGameObjectsWithTag("Tile");
         foreach (GameObject tile in tilesGO)
         {
@@ -88,7 +106,7 @@ public class level_Controller : MonoBehaviour
     {
         for (int i = 0; i < numSlimeToSpawn; i++)
         {
-            Instantiate(slimeEnemy, new Vector3(0, 0, 0), Quaternion.identity);
+            Instantiate(slimeEnemy, new Vector3((Random.Range(20, 300)), 0, (Random.Range(20, 300))), Quaternion.identity);
         }
         for (int i = 0; i < numZombieToSpawn; i++)
         {

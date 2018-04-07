@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class zombie_Script : MonoBehaviour
+public class zombie_Script : EnemyInh_Script
 {
     private Transform dest;
     UnityEngine.AI.NavMeshAgent agent;
     private Transform player;
-    public int health;
-    public int damage;
+    
+   
 
     void Start()
     {

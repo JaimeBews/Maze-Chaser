@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class skeleton_Script : MonoBehaviour
+public class skeleton_Script : EnemyInh_Script
 {
     private Animator animController;
     public Transform dest;
-    public int health;
-    public int damage;
+
     UnityEngine.AI.NavMeshAgent agent;
     private float speed;
 

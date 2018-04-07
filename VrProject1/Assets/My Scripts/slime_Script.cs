@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class slime_Script : MonoBehaviour
+public class slime_Script : EnemyInh_Script
 {
     private Transform player;
     private Animator animController;
-    public int health;
-    public int damage;
+
     UnityEngine.AI.NavMeshAgent agent;
 
     void Start()
@@ -25,6 +24,9 @@ public class slime_Script : MonoBehaviour
         {
             AiTree();
         }
+		if (this.transform.position.y<-20)
+			Destroy(this);
+		
     }
 
     public Vector3 RandomNavmeshLocation(float radius)

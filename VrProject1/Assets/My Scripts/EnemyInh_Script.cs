@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyInh_Script : MonoBehaviour
 {
-    protected int health;
-    protected int damage;
+    public int health;
+    public int damage;
     [SerializeField] private float slowAmount;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     // Use this for initialization
     void Start()
     {
-        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -21,15 +21,16 @@ public class EnemyInh_Script : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "slowGlyph")
+        if (other.tag == "SGlyph")
         {
+			Debug.Log("Skele touche");
             navMeshAgent.speed *= slowAmount;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "slowGlyph")
+        if (other.tag == "SGlyph")
         {
             navMeshAgent.speed *= 1 / slowAmount;
         }

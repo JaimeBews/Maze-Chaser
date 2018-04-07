@@ -11,7 +11,7 @@ public class player_Script : MonoBehaviour
     public int health;
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private load_Level_Script LLS;
-    [SerializeField] private Animator dragon;
+     private Animator dragon;
     // Use this for initialization
     void Start()
     {
@@ -37,8 +37,11 @@ public class player_Script : MonoBehaviour
             Lives--;
             this.gameObject.transform.position = GameObject.FindGameObjectWithTag("startTile").transform.position;
         }
-        else
-            POGO.GetComponent<level_Controller>().StartGame();
+        else{
+			
+            LLS.LoadLevel("Main");
+			
+		}
     }
 
     void tookDamage()

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4301081340849796}
   m_Layer: 0
   m_Name: TileAllExits9
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

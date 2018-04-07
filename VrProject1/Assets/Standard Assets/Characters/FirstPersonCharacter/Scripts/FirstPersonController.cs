@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
-
+using System.Collections;
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof(CharacterController))]
@@ -28,6 +28,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
         [SerializeField] private GameObject slowGlyph; 			  // the Blue slowing glyph
+		[SerializeField] private int glyphCoolDown; 			  
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -41,7 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-
+		private bool hasAGlyph = true;
         // Use this for initialization
         private void Start()
         {
@@ -80,8 +81,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-        }
+			
 
+		
+        }
+		IEnumerator getGlyph()
+		{
+			
+			yield return new WaitForSeconds(glyphCoolDown);
+			hasAGlyph = true;
+		}
+		
         private void PlayLandingSound()
         {
             m_AudioSource.clip = m_LandSound;
@@ -204,9 +214,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             bool waswalking = m_IsWalking;
 
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButton("Fire1")&&hasAGlyph)
             {
-                Instantiate(slowGlyph, this.transform.position, Quaternion.identity);
+				hasAGlyph=false;
+                Instantiate(slowGlyph, new Vector3(this.transform.position.x,0.1f,this.transform.position.z), Quaternion.identity);
+				StartCoroutine("getGlyph");
+				
             }
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.

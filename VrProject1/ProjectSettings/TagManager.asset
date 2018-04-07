@@ -11,6 +11,7 @@ TagManager:
   - Skeleton
   - startTile
   - Dragon
+  - SGlyph
   layers:
   - Default
   - TransparentFX
