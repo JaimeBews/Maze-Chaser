@@ -27,8 +27,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
-        [SerializeField] private GameObject slowGlyph; 			  // the Blue slowing glyph
-		[SerializeField] private int glyphCoolDown; 			  
+        [SerializeField] private GameObject slowGlyph;            // the Blue slowing glyph
+        [SerializeField] private int glyphCoolDown;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -42,7 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-		private bool hasAGlyph = true;
+        private bool hasAGlyph = true;
         // Use this for initialization
         private void Start()
         {
@@ -65,7 +65,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
             {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                m_Jump = Input.GetButton("Jump");
             }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -81,17 +81,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-			
-
-		
         }
-		IEnumerator getGlyph()
-		{
-			
-			yield return new WaitForSeconds(glyphCoolDown);
-			hasAGlyph = true;
-		}
-		
+
+        IEnumerator getGlyph()
+        {
+            yield return new WaitForSeconds(glyphCoolDown);
+            hasAGlyph = true;
+        }
+
         private void PlayLandingSound()
         {
             m_AudioSource.clip = m_LandSound;
@@ -104,7 +101,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
-            Vector3 desiredMove = m_Camera.transform.forward * m_Input.y + transform.right * m_Input.x;
+            Vector3 desiredMove = m_Camera.transform.forward * m_Input.y + m_Camera.transform.right * m_Input.x;
 
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
@@ -214,12 +211,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             bool waswalking = m_IsWalking;
 
-            if (Input.GetButton("Fire1")&&hasAGlyph)
+            if (Input.GetButton("Fire1") && hasAGlyph)
             {
-				hasAGlyph=false;
-                Instantiate(slowGlyph, new Vector3(this.transform.position.x,0.1f,this.transform.position.z), Quaternion.identity);
-				StartCoroutine("getGlyph");
-				
+                hasAGlyph = false;
+                Instantiate(slowGlyph, new Vector3(this.transform.position.x, 0.1f, this.transform.position.z), Quaternion.identity);
+                StartCoroutine("getGlyph");
             }
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.

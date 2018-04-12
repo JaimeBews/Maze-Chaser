@@ -13,26 +13,31 @@ public class level_Controller : MonoBehaviour
     public Transform zombieEnemy;
     public Transform skeleteonEnemy;
     // Use this for initialization
-	 private static bool spawned = false;
-	void Awake(){
-		if(spawned == false){
-		   spawned = true;
-		   DontDestroyOnLoad(this);			   
-		}
-		else{
-			DestroyImmediate(this); 
-											
-		}
-	}
-	void OnLevelWasLoaded(){
-		player=GameObject.FindGameObjectWithTag("Player").transform;
-		StartGame();
-		
-	}
+    private static bool spawned = false;
+
+    void Awake()
+    {
+        if (spawned == false)
+        {
+            spawned = true;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            DestroyImmediate(this);
+        }
+    }
+
+    void OnLevelWasLoaded()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        StartGame();
+    }
+
     void Start()
     {
         StartGame();
-		player=GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public void StartGame()
@@ -46,7 +51,7 @@ public class level_Controller : MonoBehaviour
     private void deSpawnGrid()
     {
         // if (tilesGO != null)
-		//	 tilesGO=null;
+        //	 tilesGO=null;
         tilesGO = GameObject.FindGameObjectsWithTag("Tile");
         foreach (GameObject tile in tilesGO)
         {
@@ -57,29 +62,29 @@ public class level_Controller : MonoBehaviour
     private void chooseStart()
     {
         int index = Random.Range(0, 3);
-        int randomChoice = (Random.Range(0, 9) * 32);
+        int randomChoice = (Random.Range(0, 4) * 32);
 
         switch (index)
         {
             case 0:
                 Instantiate(startTile, new Vector3(-32, 0, randomChoice), Quaternion.identity);
                 player.position = new Vector3(-32, 1, randomChoice);
-                Instantiate(endTile, new Vector3(320, 0, Random.Range(0, 9) * 32), Quaternion.identity);
+                Instantiate(endTile, new Vector3(32 * 5, 0, Random.Range(0, 4) * 32), Quaternion.identity);
                 break;
             case 1:
-                Instantiate(startTile, new Vector3(320, 0, randomChoice), Quaternion.identity);
-                player.position = new Vector3(320, 1, randomChoice);
-                Instantiate(endTile, new Vector3(-32, 0, Random.Range(0, 9) * 32), Quaternion.identity);
+                Instantiate(startTile, new Vector3(32 * 5, 0, randomChoice), Quaternion.identity);
+                player.position = new Vector3(32 * 5, 1, randomChoice);
+                Instantiate(endTile, new Vector3(-32, 0, Random.Range(0, 4) * 32), Quaternion.identity);
                 break;
             case 2:
                 Instantiate(startTile, new Vector3(randomChoice, 0, -32), Quaternion.identity);
                 player.position = new Vector3(randomChoice, 1, -32);
-                Instantiate(endTile, new Vector3((Random.Range(0, 9) * 32), 0, 320), Quaternion.identity);
+                Instantiate(endTile, new Vector3((Random.Range(0, 4) * 32), 0, 32 * 5), Quaternion.identity);
                 break;
             case 3:
-                Instantiate(startTile, new Vector3(randomChoice, 0, 320), Quaternion.identity);
-                player.position = new Vector3(randomChoice, 1, 320);
-                Instantiate(endTile, new Vector3((Random.Range(0, 9) * 32), 0, -32), Quaternion.identity);
+                Instantiate(startTile, new Vector3(randomChoice, 0, 32 * 5), Quaternion.identity);
+                player.position = new Vector3(randomChoice, 1, 32 * 5);
+                Instantiate(endTile, new Vector3((Random.Range(0, 4) * 32), 0, -32), Quaternion.identity);
 
                 break;
         }
@@ -89,9 +94,9 @@ public class level_Controller : MonoBehaviour
     void spawnGrid()
     {
         //  navscript.UpdateMesh();
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < 5; j++)
             {
                 Instantiate(getRandomTile(), new Vector3(i * 32, 0, j * 32), Quaternion.identity);
             }
