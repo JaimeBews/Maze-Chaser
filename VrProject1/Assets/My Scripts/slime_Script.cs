@@ -26,7 +26,7 @@ public class slime_Script : EnemyInh_Script
         }
 		if (this.transform.position.y<-20)
 			Destroy(this);
-		
+		agent.speed = speed;
     }
 
     public Vector3 RandomNavmeshLocation(float radius)

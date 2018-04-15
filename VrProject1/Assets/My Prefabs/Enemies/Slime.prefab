@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114250511719899744}
   - component: {fileID: 54017864523645708}
   - component: {fileID: 136874044612580932}
+  - component: {fileID: 82714838299320674}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Slime
@@ -408,6 +409,86 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!82 &82714838299320674
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1243281792134312}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95543745439871622
 Animator:
   serializedVersion: 3
@@ -436,9 +517,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86fa1cc62d3314f94ef4d97bf274f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowAmount: 0.05
   health: 1
   damage: 1
+  speed: 3.5
+  slowSpeed: 1
+  maxSpeed: 3.5
+  audioSource: {fileID: 82714838299320674}
+  hitGlyphSound: {fileID: 8300000, guid: 5e63582db229b8e4bbd70e70e5c93b89, type: 3}
+  navMeshAgent: {fileID: 0}
 --- !u!136 &136874044612580932
 CapsuleCollider:
   m_ObjectHideFlags: 1

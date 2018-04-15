@@ -111,7 +111,7 @@ public class level_Controller : MonoBehaviour
     {
         for (int i = 0; i < numSlimeToSpawn; i++)
         {
-            Instantiate(slimeEnemy, new Vector3((Random.Range(20, 300)), 0, (Random.Range(20, 300))), Quaternion.identity);
+            Instantiate(slimeEnemy, new Vector3((Random.Range(20, 140)), 0, (Random.Range(20, 140))), Quaternion.identity);
         }
         for (int i = 0; i < numZombieToSpawn; i++)
         {

@@ -26,6 +26,7 @@ public class zombie_Script : EnemyInh_Script
         {
             AiTree();
         }
+		agent.speed = speed;
     }
 
     public Vector3 RandomNavmeshLocation(float radius)

@@ -6,7 +6,11 @@ public class EnemyInh_Script : MonoBehaviour
 {
     public int health;
     public int damage;
-    [SerializeField] public float slowAmount;
+	public float speed;
+	public float slowSpeed;
+	public float maxSpeed;
+	public AudioSource audioSource;
+	public AudioClip hitGlyphSound;
     public UnityEngine.AI.NavMeshAgent navMeshAgent;
     // Use this for initialization
     void Start()
@@ -18,28 +22,22 @@ public class EnemyInh_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //   if (!navMeshAgent)
-        //       navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-    }
-    /*
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.tag == "SGlyph")
-            {
-                Debug.Log("Skele touche");
-                navMeshAgent.speed *= slowAmount;
-            }
-            else
-                return;
-        }
 
-        void OnTriggerExit(Collider other)
+    }
+	void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "SGlyph")
         {
-            if (other.tag == "SGlyph")
-            {
-                navMeshAgent.speed *= 1 / slowAmount;
-            }
-            else
-                return;
-        }*/
+			audioSource.clip = hitGlyphSound;
+			audioSource.Play();
+            StartCoroutine("Wait");
+			Destroy(other.gameObject);
+        }
+    }
+    IEnumerator Wait()
+    {
+        speed = slowSpeed;
+        yield return new WaitForSeconds(3);
+        speed = maxSpeed;
+    }
 }

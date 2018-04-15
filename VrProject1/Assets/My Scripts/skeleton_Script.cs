@@ -7,7 +7,6 @@ public class skeleton_Script : EnemyInh_Script
     public Transform dest;
 
     UnityEngine.AI.NavMeshAgent agent;
-    private float speed;
 
     void Start()
     {
@@ -40,20 +39,8 @@ public class skeleton_Script : EnemyInh_Script
         return false;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "SGlyph")
-        {
-            Debug.Log("Skele touche");
-            agent.speed = 1;
-        }
-    }
+    
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "SGlyph")
-        {
-            agent.speed = 4;
-        }
-    }
+
+    
 }

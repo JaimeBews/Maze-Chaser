@@ -12,10 +12,14 @@ public class player_Script : MonoBehaviour
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private load_Level_Script LLS;
      private Animator dragon;
+	 public AudioSource audioSource;
+	 [SerializeField] private AudioClip deathSound; 
+	 [SerializeField] private AudioClip damageSound; 
+	 [SerializeField] private AudioClip victorySound; 
     // Use this for initialization
     void Start()
     {
-        dragon = GameObject.FindGameObjectWithTag("Dragon").GetComponent<Animator>();
+       // dragon = GameObject.FindGameObjectWithTag("Dragon").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -32,6 +36,8 @@ public class player_Script : MonoBehaviour
 
     void playerDied()
     {
+		audioSource.clip = deathSound;
+        audioSource.Play();
         if (Lives > 0)
         {
             Lives--;
@@ -46,6 +52,8 @@ public class player_Script : MonoBehaviour
 
     void tookDamage()
     {
+		audioSource.clip = damageSound;
+        audioSource.Play();
         invulnerable = true;
         StartCoroutine("invulSet");
     }
@@ -66,7 +74,8 @@ public class player_Script : MonoBehaviour
     {
         if (other.tag == "endTile")
         {
-            dragon.SetBool("Eating", Eating());
+			audioSource.clip = victorySound;
+			audioSource.Play();
             LLS.LoadLevel("Main");
         }
         if (other.tag == "Zombie" && !invulnerable)
